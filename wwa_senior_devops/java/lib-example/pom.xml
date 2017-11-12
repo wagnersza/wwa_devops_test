@@ -7,6 +7,12 @@
 	<description>Test library</description>
 	<packaging>jar</packaging>
 
+	<scm>
+	  <url>https://github.com/wagnersza/wwa_devops_test</url>
+	  <connection>scm:git:git://github.com/wagnersza/wwa_devops_test.git</connection>
+	  <developerConnection>scm:git:git@github.com:wagnersza/wwa_devops_test.git</developerConnection>
+	</scm>
+
 	<build>
 		<plugins>
 			<plugin>
