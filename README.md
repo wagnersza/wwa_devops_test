@@ -5,6 +5,7 @@
 ### Build Java application
 
 Run the Ansible commands below:
+
     $ git clone
     $ cd wwa_devops_test
     $ export PROJECTS_ZIP="wwa_senior_devops"
