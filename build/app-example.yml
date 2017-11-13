@@ -1,33 +1,24 @@
 ---
-- hosts: localhost
-  gather_facts: no
-  connection: local
-  vars:
-    project_path: "{{ lookup('env', 'PROJECTS_ZIP') }}"
-
+- hosts: all
   tasks:
-  # - name: install Apache Maven
-  #   yum: name=maven state=latest
-  #   args:
-  #     chdir: "../{{ project_path }}/java/app-example"
   - name: set project dependencies to latest
     command: mvn versions:use-latest-versions -DallowSnapshots=true -DexcludeReactor=false -Dincludes=com.wwa.*
     args:
-      chdir: "../{{ project_path }}/java/app-example"
+      chdir: "{{path}}"
   - name: update version
     command: mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true
     args:
-      chdir: "../{{ project_path }}/java/app-example"
+      chdir: "{{path}}"
   - name: build package
     command: mvn package
     args:
-      chdir: "../{{ project_path }}/java/app-example"
+      chdir: "{{path}}"
   - name: get latest package version
     shell: mvn help:evaluate -Dexpression=project.version | grep -v '\['
     register: package_version
     args:
-      chdir: "../{{ project_path }}/java/app-example"
+      chdir: "{{path}}"
   - name: run app-example
     command: java -jar target/app-example-{{package_version.stdout}}.jar
     args:
-      chdir: "../{{ project_path }}/java/app-example"
+      chdir: "{{path}}"

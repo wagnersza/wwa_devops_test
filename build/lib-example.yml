@@ -1,29 +1,20 @@
 ---
-- hosts: localhost
-  gather_facts: no
-  connection: local
-  vars:
-    project_path: "{{ lookup('env', 'PROJECTS_ZIP') }}"
-
+- hosts: all
   tasks:
-    # - name: prepare release
-    #   command: mvn -B release:prepare -DdryRun=true
-    #   args:
-    #     chdir: "../{{ project_path }}/java/lib-example"
     - name: update version
       command: mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true
       args:
-        chdir: "../{{ project_path }}/java/lib-example"
+        chdir: "{{path}}"
     - name: build package
       command: mvn package
       args:
-        chdir: "../{{ project_path }}/java/lib-example"
+        chdir: "{{path}}"
     - name: get latest package version
       shell: mvn help:evaluate -Dexpression=project.version | grep -v '\['
       register: package_version
       args:
-        chdir: "../{{ project_path }}/java/lib-example"
+        chdir: "{{path}}"
     - name: install lib-example package
       command: "mvn install:install-file -Dfile=target/lib-example-{{package_version.stdout}}.jar -DpomFile=pom.xml"
       args:
-        chdir: "../{{ project_path }}/java/lib-example"
+        chdir: "{{path}}"

@@ -1,0 +1,32 @@
+---
+- hosts: all
+  vars:
+    project_path: "{{ lookup('env', 'PROJECTS_ZIP') }}"
+  tasks:
+  - name: install Apache Maven
+    yum: name=maven state=latest
+    when:
+      - ansible_distribution == "CentOS"
+  - name: install Apache Maven
+    command: brew install maven
+    when:
+      - ansible_distribution == "MacOSX"
+
+- import_playbook: lib-example.yml
+  vars:
+    path: "/vagrant/wwa_senior_devops/java/lib-example"
+  when:
+    - ansible_distribution == "CentOS"
+
+- import_playbook: app-example.yml
+  vars:
+    path: "/vagrant/wwa_senior_devops/java/app-example"
+  when:
+    - ansible_distribution == "CentOS"
+
+- import_playbook: lib-example.yml path="../{{ project_path }}/java/lib-example"
+  when:
+    - ansible_distribution == "MacOSX"
+- import_playbook: app-example.yml path="../{{ project_path }}/java/app-example"
+  when:
+    - ansible_distribution == "MacOSX"
