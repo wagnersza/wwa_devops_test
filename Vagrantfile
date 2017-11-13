@@ -68,7 +68,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.raw_arguments = ["-vvv"]
-    ansible.playbook = "build/build.yml"
+    ansible.playbook = "ansible/main.yml"
   end
 
 end
