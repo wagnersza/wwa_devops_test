@@ -36,7 +36,6 @@ Run the commands below:
 
 [Output Files](output_build_python_manual.txt)
 
-
 ### Jenkins file for build
 
 Jenkinsfile (Declarative Pipeline for Java application)
