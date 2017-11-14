@@ -1,0 +1,238 @@
+┌─[2017-11-14 10:21:17][wagnersza][±][master ✓][2.2.1][~/github/local_test/wwa_devops_test]
+└─▪ export PROJECTS_ZIP="wwa_senior_devops"
+
+┌─[2017-11-14 10:21:44][wagnersza][±][master ✓][2.2.1][~/github/local_test/wwa_devops_test]
+└─▪ cd $PROJECTS_ZIP/java/lib-example
+
+┌─[2017-11-14 10:21:50][wagnersza][±][master ✓][2.2.1][~/github/local_test/wwa_devops_test/wwa_senior_devops/java/lib-example]
+└─▪ mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true
+[INFO] Scanning for projects...
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for com.wwa.devops:lib-example:jar:1.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 18, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-jar-plugin is missing. @ line 27, column 12
+[WARNING]
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING]
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING]
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building lib-example 1.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] --- maven-release-plugin:2.3.2:update-versions (default-cli) @ lib-example ---
+[INFO] Transforming 'lib-example'...
+[INFO] Cleaning up after release...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.958 s
+[INFO] Finished at: 2017-11-14T10:22:02-02:00
+[INFO] Final Memory: 12M/307M
+[INFO] ------------------------------------------------------------------------
+┌─[2017-11-14 10:22:02][wagnersza][±][master U:1 ✗][2.2.1][~/github/local_test/wwa_devops_test/wwa_senior_devops/java/lib-example]
+└─▪ mvn package
+[INFO] Scanning for projects...
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for com.wwa.devops:lib-example:jar:1.2-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 17, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-jar-plugin is missing. @ line 26, column 12
+[WARNING]
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING]
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING]
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building lib-example 1.2-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ lib-example ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/wagnersza/github/local_test/wwa_devops_test/wwa_senior_devops/java/lib-example/src/main/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ lib-example ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ lib-example ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/wagnersza/github/local_test/wwa_devops_test/wwa_senior_devops/java/lib-example/src/test/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ lib-example ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ lib-example ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ lib-example ---
+[INFO] Building jar: /Users/wagnersza/github/local_test/wwa_devops_test/wwa_senior_devops/java/lib-example/target/lib-example-1.2-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.064 s
+[INFO] Finished at: 2017-11-14T10:22:29-02:00
+[INFO] Final Memory: 10M/307M
+[INFO] ------------------------------------------------------------------------
+
+┌─[2017-11-14 10:22:30][wagnersza][±][master U:1 ✗][2.2.1][~/github/local_test/wwa_devops_test/wwa_senior_devops/java/lib-example]
+└─▪ mvn install:install-file -Dfile=target/lib-example-`mvn help:evaluate -Dexpression=project.version | grep -v '\['`.jar -DpomFile=pom.xml
+[INFO] Scanning for projects...
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for com.wwa.devops:lib-example:jar:1.2-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 17, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-jar-plugin is missing. @ line 26, column 12
+[WARNING]
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING]
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING]
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building lib-example 1.2-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] --- maven-install-plugin:2.4:install-file (default-cli) @ lib-example ---
+Downloading ...
+[INFO] Installing /Users/wagnersza/github/local_test/wwa_devops_test/wwa_senior_devops/java/lib-example/target/lib-example-1.2-SNAPSHOT.jar to /Users/wagnersza/.m2/repository/com/wwa/devops/lib-example/1.2-SNAPSHOT/lib-example-1.2-SNAPSHOT.jar
+[INFO] Installing /Users/wagnersza/github/local_test/wwa_devops_test/wwa_senior_devops/java/lib-example/pom.xml to /Users/wagnersza/.m2/repository/com/wwa/devops/lib-example/1.2-SNAPSHOT/lib-example-1.2-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6.063 s
+[INFO] Finished at: 2017-11-14T10:23:06-02:00
+[INFO] Final Memory: 10M/233M
+[INFO] ------------------------------------------------------------------------
+
+┌─[2017-11-14 10:23:23][wagnersza][±][master U:1 ✗][2.2.1][~/github/local_test/wwa_devops_test/wwa_senior_devops/java/lib-example]
+└─▪ cd ../app-example
+
+┌─[2017-11-14 10:23:45][wagnersza][±][master U:1 ✗][2.2.1][~/github/local_test/wwa_devops_test/wwa_senior_devops/java/app-example]
+└─▪ mvn versions:use-latest-versions -DallowSnapshots=true -DexcludeReactor=false -Dincludes=com.wwa.*
+[INFO] Scanning for projects...
+Downloading ...
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building app-example 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] --- versions-maven-plugin:2.2:use-latest-versions (default-cli) @ app-example ---
+Downloading ...
+[INFO] Major version changes allowed
+[INFO] Major version changes allowed
+[INFO] Updated com.wwa.devops:lib-example:jar:1.0-SNAPSHOT to version 1.2-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:01 min
+[INFO] Finished at: 2017-11-14T10:25:05-02:00
+[INFO] Final Memory: 24M/238M
+[INFO] ------------------------------------------------------------------------
+
+┌─[2017-11-14 10:25:06][wagnersza][±][master U:2 ?:1 ✗][2.2.1][~/github/local_test/wwa_devops_test/wwa_senior_devops/java/app-example]
+└─▪ mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building app-example 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] --- maven-release-plugin:2.3.2:update-versions (default-cli) @ app-example ---
+[INFO] Transforming 'app-example'...
+[INFO] Cleaning up after release...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.222 s
+[INFO] Finished at: 2017-11-14T10:25:22-02:00
+[INFO] Final Memory: 17M/307M
+[INFO] ------------------------------------------------------------------------
+
+┌─[2017-11-14 10:25:22][wagnersza][±][master U:2 ?:1 ✗][2.2.1][~/github/local_test/wwa_devops_test/wwa_senior_devops/java/app-example]
+└─▪ mvn package
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building app-example 1.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading ...
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ app-example ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ app-example ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /Users/wagnersza/github/local_test/wwa_devops_test/wwa_senior_devops/java/app-example/target/classes
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ app-example ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/wagnersza/github/local_test/wwa_devops_test/wwa_senior_devops/java/app-example/src/test/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ app-example ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- maven-surefire-plugin:2.18.1:test (default-test) @ app-example ---
+Downloading ...
+[INFO] No tests to run.
+[INFO]
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ app-example ---
+Downloading ...
+[INFO] Building jar: /Users/wagnersza/github/local_test/wwa_devops_test/wwa_senior_devops/java/app-example/target/app-example-1.1-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:1.5.6.RELEASE:repackage (default) @ app-example ---
+Downloading ...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:43 min
+[INFO] Finished at: 2017-11-14T10:27:15-02:00
+[INFO] Final Memory: 33M/317M
+[INFO] ------------------------------------------------------------------------
+
+┌─[2017-11-14 10:28:30][wagnersza][±][master U:2 ?:1 ✗][2.2.1][~/github/local_test/wwa_devops_test/wwa_senior_devops/java/app-example]
+└─▪ java -jar target/app-example-`mvn help:evaluate -Dexpression=project.version | grep -v '\['`.jar
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.6.RELEASE)
+
+2017-11-14 10:29:06.651  INFO 27641 --- [           main] com.wwa.devops.ExampleApp                : Starting ExampleApp v1.1-SNAPSHOT on iMac.local with PID 27641 (/Users/wagnersza/github/local_test/wwa_devops_test/wwa_senior_devops/java/app-example/target/app-example-1.1-SNAPSHOT.jar started by wagnersza in /Users/wagnersza/github/local_test/wwa_devops_test/wwa_senior_devops/java/app-example)
+2017-11-14 10:29:06.655  INFO 27641 --- [           main] com.wwa.devops.ExampleApp                : No active profile set, falling back to default profiles: default
+2017-11-14 10:29:06.860  INFO 27641 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2cdf8d8a: startup date [Tue Nov 14 10:29:06 BRST 2017]; root of context hierarchy
+2017-11-14 10:29:11.237  INFO 27641 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 1234 (http)
+2017-11-14 10:29:11.273  INFO 27641 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-11-14 10:29:11.274  INFO 27641 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.16
+2017-11-14 10:29:11.409  INFO 27641 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-11-14 10:29:11.410  INFO 27641 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4582 ms
+2017-11-14 10:29:11.875  INFO 27641 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-11-14 10:29:11.881  INFO 27641 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-11-14 10:29:11.907  INFO 27641 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-11-14 10:29:11.908  INFO 27641 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-11-14 10:29:11.914  INFO 27641 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-11-14 10:29:12.763  INFO 27641 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2cdf8d8a: startup date [Tue Nov 14 10:29:06 BRST 2017]; root of context hierarchy
+2017-11-14 10:29:13.007  INFO 27641 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto java.lang.String com.wwa.devops.ExampleApp.home()
+2017-11-14 10:29:13.011  INFO 27641 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-14 10:29:13.011  INFO 27641 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-14 10:29:13.064  INFO 27641 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-14 10:29:13.064  INFO 27641 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-14 10:29:13.263  INFO 27641 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-14 10:29:13.660  INFO 27641 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-11-14 10:29:13.854  INFO 27641 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 1234 (http)
+2017-11-14 10:29:13.860  INFO 27641 --- [           main] com.wwa.devops.ExampleApp                : Started ExampleApp in 8.788 seconds (JVM running for 10.113)
+2017-11-14 10:29:14.037  INFO 27641 --- [nio-1234-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-11-14 10:29:14.038  INFO 27641 --- [nio-1234-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-11-14 10:29:14.058  INFO 27641 --- [nio-1234-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 20 ms
+Version: 1.1-SNAPSHOT
+Library: 1.2-SNAPSHOT
+Spring: 1.5.6.RELEASE
+AWS SDK: 1.11.52
+2017-11-14 10:29:14.122  INFO 27641 --- [       Thread-3] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2cdf8d8a: startup date [Tue Nov 14 10:29:06 BRST 2017]; root of context hierarchy
+2017-11-14 10:29:14.123  INFO 27641 --- [       Thread-3] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+┌─[2017-11-14 10:29:14][wagnersza][±][master U:2 ?:1 ✗][2.2.1][~/github/local_test/wwa_devops_test/wwa_senior_devops/java/app-example]
+└─▪

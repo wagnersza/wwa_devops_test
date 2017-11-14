@@ -11,31 +11,30 @@ Run the commands below:
     $ mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true
     $ mvn package
     $ mvn install:install-file -Dfile=target/lib-example-`mvn help:evaluate -Dexpression=project.version | grep -v '\['`.jar -DpomFile=pom.xml
-    $ cd $PROJECTS_ZIP/java/app-example
+    $ cd ../app-example
     $ mvn versions:use-latest-versions -DallowSnapshots=true -DexcludeReactor=false -Dincludes=com.wwa.*
     $ mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true
     $ mvn package
-    $ java -jar target/lib-example-`mvn help:evaluate -Dexpression=project.version | grep -v '\['`.jar
+    $ java -jar target/app-example-`mvn help:evaluate -Dexpression=project.version | grep -v '\['`.jar
 }
 
-### Output Files
-
-
+[Output File](output_build_java_manual.txt)
 
 ### Build Python application (manual execution)
 
-    $ sudo easy_install pip
     $ export PROJECTS_ZIP="wwa_senior_devops"
     $ cd $PROJECTS_ZIP/python/wwa_app_example
-    $ sudo pip install -r requirements.txt
-    $ sudo pip install pylint
+    $ pip install -r requirements.txt
+    $ pip install pylint
+    $ cd wwa_app_example
     $ pylint *.py
+    $ cd ..
     $ python -m unittest
     $ python setup.py bdist
     $ python setup.py sdist
-    $ sudo python setup.py install
+    $ python setup.py install
 
-### Output Files
+[Output Files](output_build_python_manual.txt)
 
 
 ### Jenkins file for build
@@ -89,4 +88,4 @@ In vagrant, everyfing is automated, build, install and run for Python and Java a
 
     vagrant up
 
-### Output Files
+[Output File](output_vagrant.txt)
