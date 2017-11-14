@@ -1,0 +1,20 @@
+---
+- hosts: all
+  tasks:
+    - name: update version
+      command: mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true
+      args:
+        chdir: "{{path}}"
+    - name: build package
+      command: mvn package
+      args:
+        chdir: "{{path}}"
+    - name: get latest package version
+      shell: mvn help:evaluate -Dexpression=project.version | grep -v '\['
+      register: package_version
+      args:
+        chdir: "{{path}}"
+    - name: install lib-example package
+      command: "mvn install:install-file -Dfile=target/lib-example-{{package_version.stdout}}.jar -DpomFile=pom.xml"
+      args:
+        chdir: "{{path}}"

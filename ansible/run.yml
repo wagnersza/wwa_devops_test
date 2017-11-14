@@ -1,0 +1,25 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    packages_path: "/opt/wwa"
+  tasks:
+    - file:
+        path: "{{packages_path}}"
+        state: directory
+    - shell: "cp -rf /vagrant/wwa_senior_devops/python/wwa_app_example {{packages_path}}"
+    - shell: "cp -rf /vagrant/wwa_senior_devops/java/* {{packages_path}}"
+    - name: make java systemd file
+      template:
+        src: wwa_rest_server.j2
+        dest: /etc/systemd/system/wwa_rest_server.service
+    - name: start myservice
+      systemd:
+        state: started
+        name: wwa_rest_server
+        daemon_reload: yes
+        enabled: yes
+    - cron:
+        name: "run wwa_app_example every 5 minuts"
+        minute: "5"
+        job: python -c "execfile('{{packages_path}}/wwa_app_example/wwa_app_example/main.py'); run()"

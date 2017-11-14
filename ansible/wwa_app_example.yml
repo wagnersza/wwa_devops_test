@@ -1,0 +1,30 @@
+---
+- hosts: all
+  tasks:
+    - name: install epel
+      command: "sudo yum install -y epel-release"
+    - name: install pip
+      command: "sudo yum install -y python-pip"
+    - name: install requirements
+      command: "sudo pip install -r requirements.txt"
+      args:
+        chdir: "{{path}}"
+    - name: install pylint
+      command: "sudo pip install pylint"
+    - name: run pylint
+      shell: "pylint *.py"
+      ignore_errors: yes
+      args:
+        chdir: "{{path}}/wwa_app_example"
+    - name: run unittest
+      command: "python -m unittest"
+      args:
+        chdir: "{{path}}"
+    - name: make binary package
+      command: "python setup.py bdist"
+      args:
+        chdir: "{{path}}"
+    - name: make source package
+      command: "python setup.py sdist"
+      args:
+        chdir: "{{path}}"

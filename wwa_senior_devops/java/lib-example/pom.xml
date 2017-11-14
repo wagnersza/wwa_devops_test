@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.wwa.devops</groupId>
 	<artifactId>lib-example</artifactId>
-	<version>1.9-SNAPSHOT</version>
+	<version>1.10-SNAPSHOT</version>
 	<description>Test library</description>
 	<packaging>jar</packaging>
 

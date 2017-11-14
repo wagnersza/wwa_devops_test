@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    packages_path: "/vagrant/wwa_senior_devops/java/lib-example"
+  tasks:
+  - name: install Apache Maven
+    yum: name=maven state=latest
+    become: true
+
+# Java build
+- import_playbook: lib-example.yml
+  vars:
+    path: "/vagrant/wwa_senior_devops/java/lib-example"
+- import_playbook: app-example.yml
+  vars:
+    path: "/vagrant/wwa_senior_devops/java/app-example"
+
+# Python build
+- import_playbook: wwa_app_example.yml
+  vars:
+    path: "/vagrant/wwa_senior_devops/python/wwa_app_example"
+
+# Config and run applications
+- import_playbook: run.yml

@@ -6,18 +6,16 @@
 
 Run the commands below:
 
-    $ git clone
-    $ cd wwa_devops_test
     $ export PROJECTS_ZIP="wwa_senior_devops"
-    $ cd $PROJECTS_ZIP/java/lib-example'
-    $ mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true'
-    $ mvn package'
-    $ mvn install:install-file -Dfile=target/lib-example-`mvn help:evaluate -Dexpression=project.version | grep -v '\['`.jar -DpomFile=pom.xml'
-    $ cd $PROJECTS_ZIP/java/app-example'
-    $ mvn versions:use-latest-versions -DallowSnapshots=true -DexcludeReactor=false -Dincludes=com.wwa.*'
-    $ mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true'
-    $ mvn package'
-    $ java -jar target/lib-example-`mvn help:evaluate -Dexpression=project.version | grep -v '\['`.jar'
+    $ cd $PROJECTS_ZIP/java/lib-example
+    $ mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true
+    $ mvn package
+    $ mvn install:install-file -Dfile=target/lib-example-`mvn help:evaluate -Dexpression=project.version | grep -v '\['`.jar -DpomFile=pom.xml
+    $ cd $PROJECTS_ZIP/java/app-example
+    $ mvn versions:use-latest-versions -DallowSnapshots=true -DexcludeReactor=false -Dincludes=com.wwa.*
+    $ mvn -B release:update-versions -DallowSnapshots=true -DautoVersionSubmodules=true
+    $ mvn package
+    $ java -jar target/lib-example-`mvn help:evaluate -Dexpression=project.version | grep -v '\['`.jar
 }
 
 ### Output Files
@@ -27,6 +25,8 @@ Run the commands below:
 ### Build Python application (manual execution)
 
     $ sudo easy_install pip
+    $ export PROJECTS_ZIP="wwa_senior_devops"
+    $ cd $PROJECTS_ZIP/python/wwa_app_example
     $ sudo pip install -r requirements.txt
     $ sudo pip install pylint
     $ pylint *.py
